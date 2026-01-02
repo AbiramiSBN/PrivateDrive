@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Private Drive</title>
+  <title>NoxiustDrive</title>
   <style>
     :root{
       --bg:#0b1220;
@@ -528,7 +528,7 @@
       <div class="title-left">
         <div class="appicon">🗂️</div>
         <div class="apptitle">
-          <b>Private Drive</b>
+          <b>NoxiustDrive</b>
           <span id="subtitle">Locked</span>
         </div>
       </div>
@@ -624,7 +624,7 @@
   <!-- Login overlay -->
   <div class="overlay" id="overlay">
     <div class="modal" role="dialog" aria-modal="true">
-      <h2>🔐 Sign in to Private Drive</h2>
+      <h2>🔐 Sign in to NoxiustDrive</h2>
       <p>
         This is a <b>static</b> login gate (no server). For real protection, use server auth.
         Press <span class="kbd">Enter</span> to unlock.
@@ -676,9 +676,9 @@
 
     const TREE = [
       {
-        id:"thispc", name:"This PC", icon:"🖥️", hint:"Private Drive",
+        id:"thispc", name:"This PC", icon:"🖥️", hint:"NoxiustDrive",
         children:[
-          { id:"home", name:"Private Drive", icon:"🗂️", path:"", hint:"Home" },
+          { id:"home", name:"NoxiustDrive", icon:"🗂️", path:"", hint:"Home" },
           { id:"docs", name:"Documents", icon:"📄", path:"documents/", hint:"PDFs, notes" },
           { id:"music", name:"Music", icon:"🎵", path:"music/", hint:"Audio" },
           { id:"pics", name:"Pictures", icon:"🖼️", path:"pictures/", hint:"Images" },
@@ -825,7 +825,7 @@
     function renderBreadcrumbs(){
       const parts = [];
       parts.push({ label:"This PC", path:null });
-      parts.push({ label:"Private Drive", path:"" });
+      parts.push({ label:"NoxiustDrive", path:"" });
 
       if(currentPath){
         const clean = currentPath.replace(/\/$/, "");

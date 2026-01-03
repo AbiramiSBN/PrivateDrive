@@ -1,5 +1,7 @@
 # NoxiustDrive
 
+![NoxiustDrive Banner](pictures/wallpaper/banner.png)
+
 NoxiustDrive is a **fullscreen, Windows File Explorer–style web UI** for navigating server folders.  
 It features a modern frosted-glass (“mica”) design, a Windows-like lock screen, and familiar Explorer interactions such as double-click to open, right-click context menus, search, and a details pane.
 
@@ -15,7 +17,7 @@ It features a modern frosted-glass (“mica”) design, a Windows-like lock scre
 - 🔑 **Username + password login** (salted SHA-256 hash, no plaintext)
 - 📂 **Real folder navigation** (no fake files)
 - 🖱️ **Double-click to open folders**
-- 🖱️ **Right-click menu** (Open only, Explorer-style)
+- 🖱️ **Right-click context menu** (Open only, Explorer-style)
 - 🔍 **Search box** (filters visible folders)
 - 🧭 **“This PC” navigation tree**
 - 🧾 **Details pane** (preview + properties)
@@ -36,8 +38,9 @@ Your server must expose real directories like:
 ├── music/
 ├── pictures/
 │   └── wallpapers/
-│       ├── wallpaper.jpeg      (lock screen)
-│       └── wallpaper2.jpeg     (file browser background)
+│       ├── wallpaper.jpeg      # lock screen
+│       ├── wallpaper2.jpeg     # file browser background
+│       └── banner.png          # README banner
 └── videos/
 
 ```
@@ -78,7 +81,6 @@ Works with any server that serves directories, for example:
 - Apache
 - Nginx
 - Node.js static servers
-- Vercel
 
 ⚠️ Browsers cannot read your filesystem directly — directory access must come from the server.
 
@@ -101,14 +103,15 @@ pictures/wallpapers/
 
 ```
 - Edit colors and blur strength in `:root` CSS variables
-- Add or remove root folders in `ROOT_FOLDERS` array
+- Add or remove root folders in the `ROOT_FOLDERS` array
 
 ---
 
 ---
 
 ## 🙌 Credits
-Programmed by Abirami Balasubramanian
 
 Built with pure **HTML, CSS, and JavaScript**.  
 Inspired by **Windows 11 File Explorer (mica design)**.
+
+Just say the word 😎

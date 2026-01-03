@@ -1,6 +1,6 @@
 # NoxiustDrive
 
-![NoxiustDrive Banner](pictures/wallpaper/banner.png)
+![NoxiustDrive Banner](pictures/wallpapers/banner.png)
 
 NoxiustDrive is a **fullscreen, Windows File Explorer–style web UI** for navigating server folders.  
 It features a modern frosted-glass (“mica”) design, a Windows-like lock screen, and familiar Explorer interactions such as double-click to open, right-click context menus, search, and a details pane.

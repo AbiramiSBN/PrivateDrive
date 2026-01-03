@@ -6,22 +6,21 @@
   <title>NoxiustDrive</title>
   <style>
     :root{
-      --bg:#0b1220;
-      --glass: rgba(15,23,42,.70);
-      --glass2: rgba(17,28,51,.55);
-      --glass3: rgba(255,255,255,.06);
-      --border: rgba(255,255,255,.12);
-      --border2: rgba(255,255,255,.16);
-      --text: #e5e7eb;
-      --muted:#a7b0bf;
+      /* tuned for dark wallpaper */
+      --glass: rgba(10,14,24,.72);
+      --glass2: rgba(14,20,34,.62);
+      --panel: rgba(10,14,24,.58);
+      --panel2: rgba(255,255,255,.055);
+      --border: rgba(255,255,255,.14);
+      --border2: rgba(255,255,255,.20);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
       --accent:#60a5fa;
-      --accent2:#93c5fd;
       --ok:#34d399;
       --danger:#fb7185;
-      --shadow: 0 24px 90px rgba(0,0,0,.70);
       --font: system-ui, -apple-system, "Segoe UI Variable", "Segoe UI", Roboto, Arial, sans-serif;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      --r: 14px;
+      --shadow: 0 24px 90px rgba(0,0,0,.70);
     }
     *{ box-sizing:border-box; }
     html, body { height:100%; }
@@ -31,91 +30,86 @@
       overflow:hidden;
       font-family:var(--font);
       color:var(--text);
-      background: radial-gradient(1200px 800px at 15% 10%, rgba(96,165,250,.18), transparent 60%),
-                  radial-gradient(900px 600px at 85% 20%, rgba(52,211,153,.12), transparent 60%),
-                  linear-gradient(180deg, #070b16, var(--bg));
+
+      /* FILE BROWSER WALLPAPER (dark) */
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)),
+        url("pictures/wallpapers/wallpaper2.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat:no-repeat;
     }
 
-    /* ===== App Shell (Fullscreen) ===== */
     .window{
-      width:100vw;
-      height:100vh;
-      display:flex;
-      flex-direction:column;
+      width:100vw;height:100vh;
+      display:flex;flex-direction:column;
       background: var(--glass);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(16px);
       overflow:hidden;
     }
 
-    /* ===== Top Area (Win-ish) ===== */
     .titlebar{
       height:46px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display:flex;align-items:center;justify-content:space-between;
       padding:0 10px 0 12px;
-      background: rgba(2,6,23,.58);
+      background: rgba(0,0,0,.40);
       border-bottom:1px solid var(--border);
       user-select:none;
     }
-    .title-left{ display:flex; align-items:center; gap:10px; min-width:260px; }
+    .title-left{ display:flex; align-items:center; gap:10px; }
     .appicon{
       width:26px;height:26px;border-radius:8px;
       display:grid;place-items:center;
-      background:rgba(96,165,250,.16);
-      border:1px solid rgba(96,165,250,.25);
+      background:rgba(96,165,250,.18);
+      border:1px solid rgba(96,165,250,.28);
       font-size:14px;
     }
     .apptitle{ display:flex; flex-direction:column; line-height:1.05; }
     .apptitle b{ font-size:.98rem; letter-spacing:.2px; }
     .apptitle span{ font-size:.78rem; color:var(--muted); }
 
-    .winbtns{ display:flex; gap:8px; align-items:center; opacity:.8; }
+    .winbtns{ display:flex; gap:8px; align-items:center; opacity:.85; }
     .dotbtn{
       width:12px;height:12px;border-radius:50%;
-      background:rgba(255,255,255,0.18);
+      background:rgba(255,255,255,0.22);
       border:1px solid rgba(255,255,255,0.14);
     }
-    .dotbtn.close{ background: rgba(251,113,133,.35); border-color: rgba(251,113,133,.30); }
+    .dotbtn.close{ background: rgba(251,113,133,.38); border-color: rgba(251,113,133,.30); }
 
-    /* ===== Command bar (Win11-ish) ===== */
     .cmdbar{
-      display:flex;
-      align-items:center;
-      gap:10px;
+      display:flex;align-items:center;gap:10px;
       padding:10px 12px;
-      background: var(--glass2);
+      background: rgba(0,0,0,.26);
       border-bottom:1px solid var(--border);
       user-select:none;
     }
     .btn{
       appearance:none;
       border:1px solid var(--border2);
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.07);
       color:var(--text);
       padding:8px 10px;
       border-radius: 12px;
       cursor:pointer;
       font-size:.92rem;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
+      display:inline-flex; align-items:center; gap:8px;
       transition: background .12s, border-color .12s, transform .06s;
       white-space:nowrap;
     }
-    .btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.22); }
+    .btn:hover{ background: rgba(255,255,255,.11); border-color: rgba(255,255,255,.26); }
     .btn:active{ transform: translateY(1px); }
     .btn:disabled{ opacity:.45; cursor:not-allowed; }
     .btn.primary{
-      border-color: rgba(96,165,250,.40);
-      background: rgba(96,165,250,.18);
+      border-color: rgba(96,165,250,.45);
+      background: rgba(96,165,250,.22);
     }
+
     .pill{
       display:flex; align-items:center; gap:8px;
       padding:8px 10px;
       border-radius:999px;
       border:1px solid var(--border2);
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.07);
       color: var(--muted);
       font-size:.86rem;
     }
@@ -125,235 +119,115 @@
       box-shadow: 0 0 0 6px rgba(251,113,133,.12);
     }
 
-    /* ===== Address row ===== */
     .addrrow{
-      display:flex;
-      align-items:center;
-      gap:10px;
+      display:flex; align-items:center; gap:10px;
       padding:10px 12px;
-      background: rgba(17,28,51,.42);
+      background: rgba(0,0,0,.18);
       border-bottom:1px solid var(--border);
     }
-    .addrWrap{
-      flex:1;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-
-    .navbtns{ display:flex; gap:8px; }
-    .small{
-      padding:8px 10px;
-      border-radius: 12px;
-    }
-
     .addr{
       flex:1;
-      display:flex;
-      align-items:center;
-      gap:6px;
+      display:flex;align-items:center;gap:6px;
       padding:8px 10px;
       border-radius: 12px;
       border:1px solid var(--border2);
-      background: rgba(255,255,255,.05);
+      background: rgba(255,255,255,.06);
       overflow:auto;
       scrollbar-width: thin;
       min-width:0;
-    }
-    .crumb{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      color: var(--muted);
-      font-size:.92rem;
-      white-space:nowrap;
-    }
-    .crumb button{
-      border:0;
-      background: transparent;
-      color: var(--text);
-      cursor:pointer;
-      padding:4px 6px;
-      border-radius:10px;
-      font-size:.92rem;
-    }
-    .crumb button:hover{ background: rgba(255,255,255,.08); }
-    .sep{ color: rgba(156,163,175,.7); }
-
-    .addrEdit{
-      display:none;
-      flex:1;
-      min-width:0;
-      padding:10px 12px;
-      border-radius: 12px;
-      border:1px solid rgba(96,165,250,.55);
-      background: rgba(2,6,23,.55);
-      color: var(--text);
-      outline:none;
-      font-size:.92rem;
       font-family: var(--mono);
+      font-size:.9rem;
+      color: rgba(255,255,255,.92);
     }
-
     .search{
       width: min(420px, 45vw);
-      display:flex;
-      align-items:center;
-      gap:8px;
+      display:flex;align-items:center;gap:8px;
       padding:8px 10px;
       border-radius: 12px;
       border:1px solid var(--border2);
-      background: rgba(255,255,255,.05);
+      background: rgba(255,255,255,.06);
     }
     .search input{
       width:100%;
-      border:0;
-      outline:none;
+      border:0; outline:none;
       background:transparent;
       color:var(--text);
       font-size:.92rem;
     }
 
-    /* ===== Main Layout ===== */
-    .body{
-      flex:1;
-      display:flex;
-      min-height:0;
-    }
+    .body{ flex:1; display:flex; min-height:0; }
 
-    /* Left nav (Quick access + This PC) */
     .left{
       width: 310px;
-      min-width: 270px;
-      background: rgba(2,6,23,.33);
+      background: rgba(0,0,0,.22);
       border-right:1px solid var(--border);
       padding:10px;
+      min-height:0;
       display:flex;
       flex-direction:column;
       gap:10px;
-      min-height:0;
     }
-
     .panehdr{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
+      display:flex;align-items:center;justify-content:space-between;
       padding: 8px 10px;
       border-radius: 12px;
       border:1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
       color: var(--muted);
       font-size:.84rem;
       letter-spacing:.08em;
       text-transform: uppercase;
       user-select:none;
     }
-
-    .tree{
-      overflow:auto;
-      padding-right:6px;
-    }
-
+    .tree{ overflow:auto; }
     .node{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 8px;
+      display:flex;align-items:center;gap:10px;
+      padding:10px 10px;
       border-radius: 12px;
       cursor:pointer;
-      user-select:none;
       border:1px solid transparent;
-      outline:none;
+      user-select:none;
     }
-    .node:hover{
-      background:rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.10);
-    }
-    .node:focus{
-      border-color: rgba(147,197,253,.55);
-      box-shadow: 0 0 0 3px rgba(147,197,253,.12);
-    }
-    .node.active{
-      background: rgba(96,165,250,.14);
-      border-color: rgba(96,165,250,.25);
-    }
-
-    .twisty{
-      width:18px;
-      display:grid;
-      place-items:center;
-      font-size: 12px;
-      opacity:.9;
-    }
+    .node:hover{ background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.14); }
     .icon{
-      width:28px;height:28px;
+      width:30px;height:30px;border-radius:10px;
       display:grid;place-items:center;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.10);
-      font-size: 14px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
     }
-    .label{
-      display:flex;
-      flex-direction:column;
-      line-height:1.15;
-      min-width:0;
-    }
-    .label b{
-      font-size:.93rem;
-      overflow:hidden;
-      white-space:nowrap;
-      text-overflow:ellipsis;
-    }
-    .label span{
-      font-size:.78rem;
-      color:var(--muted);
-      overflow:hidden;
-      white-space:nowrap;
-      text-overflow:ellipsis;
-    }
-    .children{
-      margin-left: 26px;
-      display:none;
-      padding-left: 10px;
-      border-left:1px dashed rgba(255,255,255,0.12);
-    }
-    .children.show{ display:block; }
+    .label b{ display:block; font-size:.94rem; }
+    .label span{ display:block; font-size:.78rem; color:var(--muted); }
 
-    /* Middle list */
     .main{
       flex:1;
-      min-width:0;
       padding:12px;
+      min-width:0;
       display:flex;
       flex-direction:column;
       min-height:0;
       gap:10px;
     }
-
     .list{
       flex:1;
       min-height:0;
       border:1px solid var(--border);
-      border-radius: var(--r);
-      background: rgba(255,255,255,0.04);
+      border-radius: 14px;
+      background: rgba(0,0,0,.20);
       overflow:hidden;
       display:flex;
       flex-direction:column;
     }
-
     .listhead{
       display:grid;
       grid-template-columns: 1.55fr .75fr .85fr;
       padding:10px 12px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
       border-bottom:1px solid var(--border);
       color: var(--muted);
       font-size:.82rem;
       user-select:none;
     }
-    .rows{ overflow:auto; flex:1; outline:none; }
+    .rows{ overflow:auto; flex:1; }
     .row{
       display:grid;
       grid-template-columns: 1.55fr .75fr .85fr;
@@ -362,73 +236,46 @@
       align-items:center;
       cursor:pointer;
       user-select:none;
-      transition: background .10s, border-color .10s;
       border-left:3px solid transparent;
     }
-    .row:hover{ background: rgba(255,255,255,0.06); }
-    .row.selected{
-      background: rgba(96,165,250,.18);
-      border-left-color: rgba(96,165,250,.70);
-    }
-    .row:focus{
-      outline:none;
-      box-shadow: inset 0 0 0 2px rgba(147,197,253,.45);
-    }
+    .row:hover{ background: rgba(255,255,255,.07); }
+    .row.selected{ background: rgba(96,165,250,.18); border-left-color: rgba(96,165,250,.78); }
 
-    .cellname{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
+    .cellname{ display:flex;align-items:center;gap:10px; min-width:0; }
     .fileicon{
-      width:30px;height:30px;
-      border-radius: 10px;
-      display:grid;
-      place-items:center;
-      background: rgba(96,165,250,.14);
-      border:1px solid rgba(96,165,250,.20);
-      font-size: 14px;
+      width:30px;height:30px;border-radius:10px;
+      display:grid;place-items:center;
+      background: rgba(96,165,250,.16);
+      border:1px solid rgba(96,165,250,.22);
       flex:0 0 auto;
     }
-    .nametext{
-      min-width:0;
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
+    .nametext{ min-width:0; }
     .nametext b{
-      font-size:.95rem;
-      overflow:hidden;
-      white-space:nowrap;
-      text-overflow:ellipsis;
+      display:block;
+      overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
     }
     .nametext span{
+      display:block;
       font-size:.8rem;
       color:var(--muted);
-      overflow:hidden;
-      white-space:nowrap;
-      text-overflow:ellipsis;
       font-family: var(--mono);
+      overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
     }
     .type,.modified{ color: var(--muted); font-size:.9rem; }
 
-    /* Right details */
     .details{
       width: 360px;
-      min-width: 320px;
-      background: rgba(2,6,23,.33);
+      background: rgba(0,0,0,.22);
       border-left:1px solid var(--border);
       padding:12px;
+      min-height:0;
       display:flex;
       flex-direction:column;
       gap:10px;
-      min-height:0;
     }
-
     .preview{
-      border:1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
       border-radius: 16px;
       padding:12px;
       min-height: 170px;
@@ -439,53 +286,37 @@
       overflow:hidden;
       user-select:none;
     }
-    .bigicon{ font-size: 52px; opacity:.95; }
+    .bigicon{ font-size: 52px; }
     .preview small{
       position:absolute;
-      bottom:10px;
-      left:12px;
-      right:12px;
-      color: rgba(167,176,191,.95);
+      bottom:10px; left:12px; right:12px;
+      color: rgba(255,255,255,.78);
       font-size:.82rem;
-      overflow:hidden;
-      white-space:nowrap;
-      text-overflow:ellipsis;
+      overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
       font-family: var(--mono);
     }
-
     .props{
-      border:1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
       border-radius: 16px;
       padding:12px;
       overflow:auto;
       flex:1;
     }
-    .props h3{
-      margin:0 0 10px 0;
-      font-size: .95rem;
-      color: rgba(229,231,235,.92);
-      user-select:none;
-    }
+    .props h3{ margin:0 0 10px 0; font-size:.95rem; }
     .kv{
       display:grid;
       grid-template-columns: 1fr 1.2fr;
       gap:8px 10px;
       font-size:.88rem;
     }
-    .k{ color: var(--muted); user-select:none; }
-    .v{
-      color: rgba(229,231,235,.92);
-      font-family: var(--mono);
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-    }
+    .k{ color: var(--muted); }
+    .v{ font-family: var(--mono); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
 
     .statusbar{
       height:34px;
       border-top:1px solid var(--border);
-      background: rgba(2,6,23,.45);
+      background: rgba(0,0,0,.28);
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -495,18 +326,7 @@
       user-select:none;
     }
 
-    /* ===== Locked blur (only app area) ===== */
-    .locked .titlebar,
-    .locked .cmdbar,
-    .locked .addrrow,
-    .locked .body,
-    .locked .statusbar{
-      filter: blur(10px);
-      pointer-events:none;
-      opacity:.55;
-    }
-
-    /* ===== Context Menu (Open only) ===== */
+    /* Context menu */
     .ctx{
       position: fixed;
       z-index: 10000;
@@ -534,7 +354,7 @@
     .ctx button:hover{ background: rgba(255,255,255,0.08); }
     .ctx button:disabled{ opacity:.45; cursor:not-allowed; }
 
-    /* ===== Lock Screen (Windows-like) ===== */
+    /* Lock screen (still wallpaper.jpeg) */
     .lock{
       position: fixed;
       inset:0;
@@ -550,52 +370,12 @@
       color: white;
     }
     .lock.show{ display:block; }
-
-    .lockTop{
-      position:absolute;
-      inset:0;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      transition: opacity .18s ease, transform .18s ease;
-    }
-    .time{
-      font-size: 64px;
-      font-weight: 600;
-      letter-spacing: .5px;
-      text-shadow: 0 18px 50px rgba(0,0,0,.55);
-    }
-    .date{
-      font-size: 18px;
-      color: rgba(255,255,255,.90);
-      text-shadow: 0 18px 50px rgba(0,0,0,.55);
-    }
-    .hint{
-      margin-top: 18px;
-      font-size: 14px;
-      color: rgba(255,255,255,.85);
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.22);
-      backdrop-filter: blur(10px);
-    }
-
     .signin{
       position:absolute;
       inset:0;
       display:flex;
       align-items:center;
       justify-content:center;
-      opacity:0;
-      pointer-events:none;
-      transition: opacity .20s ease;
-    }
-    .signin.show{
-      opacity:1;
-      pointer-events:auto;
     }
     .signinCard{
       width:min(520px, calc(100vw - 44px));
@@ -606,12 +386,7 @@
       backdrop-filter: blur(18px);
       padding: 18px;
     }
-    .signinHead{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom: 14px;
-    }
+    .signinHead{ display:flex; align-items:center; gap:12px; margin-bottom: 14px; }
     .avatar{
       width:46px;height:46px;border-radius: 16px;
       display:grid;place-items:center;
@@ -619,10 +394,8 @@
       border: 1px solid rgba(96,165,250,0.25);
       font-size: 18px;
     }
-    .signinTitle{ display:flex; flex-direction:column; line-height:1.1; }
-    .signinTitle b{ font-size: 1.08rem; }
-    .signinTitle span{ color: rgba(255,255,255,.78); font-size: .88rem; }
-
+    .signinTitle b{ display:block; font-size:1.08rem; }
+    .signinTitle span{ display:block; color: rgba(255,255,255,.78); font-size:.88rem; }
     .inp{
       width:100%;
       padding: 12px 12px;
@@ -634,33 +407,19 @@
       font-size: .96rem;
     }
     .inp:focus{ border-color: rgba(96,165,250,.75); }
-    .err{
-      min-height: 18px;
-      margin-top: 8px;
-      font-size:.9rem;
-      color: rgba(251,113,133,.95);
-    }
-    .signinBtns{
-      display:flex;
-      justify-content:flex-end;
-      gap:10px;
-      margin-top: 12px;
-    }
-    .ghost{
-      border-color: rgba(255,255,255,.18);
-      background: rgba(0,0,0,.18);
-    }
+    .err{ min-height: 18px; margin-top: 8px; font-size:.9rem; color: rgba(251,113,133,.95); }
+    .signinBtns{ display:flex; justify-content:flex-end; gap:10px; margin-top: 12px; }
   </style>
 </head>
 
 <body>
-  <div class="window locked" id="win">
+  <div class="window" id="win">
     <div class="titlebar">
       <div class="title-left">
         <div class="appicon">🗂️</div>
         <div class="apptitle">
           <b>NoxiustDrive</b>
-          <span id="subtitle">Locked</span>
+          <span id="subtitle">Unlocked</span>
         </div>
       </div>
       <div class="winbtns" aria-hidden="true">
@@ -671,79 +430,46 @@
     </div>
 
     <div class="cmdbar">
-      <div style="display:flex; gap:8px; align-items:center;">
-        <button class="btn small" id="backBtn" disabled title="Back (Alt+Left)">⬅️</button>
-        <button class="btn small" id="forwardBtn" disabled title="Forward (Alt+Right)">➡️</button>
-        <button class="btn small" id="upBtn" disabled title="Up (Backspace)">⬆️</button>
-      </div>
-
       <button class="btn" id="openBtn" disabled>📂 Open</button>
       <button class="btn" id="refreshBtn">🔄 Refresh</button>
-
       <div style="flex:1"></div>
-
       <div class="pill">
         <span class="statusDot" id="statusDot"></span>
         <span id="statusText">Locked</span>
       </div>
-
-      <button class="btn primary" id="loginBtn">🔐 Sign in</button>
-      <button class="btn" id="logoutBtn" style="display:none;">🚪 Lock</button>
+      <button class="btn primary" id="logoutBtn">🚪 Lock</button>
     </div>
 
     <div class="addrrow">
-      <div class="addrWrap">
-        <div class="addr" id="addr" title="Click to edit (Ctrl+L)"></div>
-        <input class="addrEdit" id="addrEdit" spellcheck="false" />
-      </div>
-
-      <div class="search" title="Search (filters list)">
-        🔎 <input id="searchBox" placeholder="Search" />
-      </div>
+      <div class="addr" id="addr">/</div>
+      <div class="search">🔎 <input id="searchBox" placeholder="Search (filters list)"/></div>
     </div>
 
     <div class="body">
-      <!-- Left navigation -->
       <div class="left">
-        <div class="panehdr">
-          <span>Navigation</span>
-          <button class="btn small" id="collapseAllBtn" title="Collapse all">➖</button>
-        </div>
+        <div class="panehdr"><span>This PC</span><span>Folders</span></div>
         <div class="tree" id="tree"></div>
       </div>
 
-      <!-- Middle list -->
       <div class="main">
-        <div class="list" id="list">
-          <div class="listhead">
-            <div>Name</div>
-            <div>Type</div>
-            <div>Date modified</div>
-          </div>
-          <div class="rows" id="rows" tabindex="0" aria-label="File list"></div>
+        <div class="list">
+          <div class="listhead"><div>Name</div><div>Type</div><div>Date modified</div></div>
+          <div class="rows" id="rows"></div>
         </div>
       </div>
 
-      <!-- Right details -->
       <div class="details">
-        <div class="panehdr">
-          <span>Details</span>
-          <span style="color:var(--muted); font-size:.85rem;">Preview + Properties</span>
-        </div>
-
+        <div class="panehdr"><span>Details</span><span>Preview + Properties</span></div>
         <div class="preview">
           <div class="bigicon" id="bigicon">🗂️</div>
           <small id="previewLabel">Select an item</small>
         </div>
-
         <div class="props">
           <h3>Properties</h3>
           <div class="kv" id="kv">
             <div class="k">Name</div><div class="v">—</div>
             <div class="k">Type</div><div class="v">—</div>
-            <div class="k">Path</div><div class="v">—</div>
-            <div class="k">Modified</div><div class="v">—</div>
-            <div class="k">Size</div><div class="v">—</div>
+            <div class="k">URL</div><div class="v">—</div>
           </div>
         </div>
       </div>
@@ -755,718 +481,249 @@
     </div>
   </div>
 
-  <!-- Context menu -->
-  <div class="ctx" id="ctxMenu">
-    <button id="ctxOpen" disabled>Open</button>
-  </div>
+  <div class="ctx" id="ctxMenu"><button id="ctxOpen" disabled>Open</button></div>
 
-  <!-- Lock Screen -->
   <div class="lock show" id="lock">
-    <div class="lockTop" id="lockTop">
-      <div class="time" id="lockTime">--:--</div>
-      <div class="date" id="lockDate">---</div>
-      <div class="hint">Click or press Enter to sign in</div>
-    </div>
-
-    <div class="signin" id="signin">
-      <div class="signinCard" role="dialog" aria-modal="true">
+    <div class="signin">
+      <div class="signinCard">
         <div class="signinHead">
           <div class="avatar">🔒</div>
           <div class="signinTitle">
-            <b>NoxiustDrive</b>
-            <span>Sign in</span>
+            <b>NoxiustDrive</b><span>Sign in</span>
           </div>
         </div>
-
         <input class="inp" id="user" placeholder="Username" autocomplete="username" />
         <div style="height:10px"></div>
         <input class="inp" id="pass" placeholder="Password" type="password" autocomplete="current-password" />
-
         <div class="err" id="msg"></div>
-
         <div class="signinBtns">
-          <button class="btn ghost" id="cancelBtn">Cancel</button>
           <button class="btn primary" id="submitBtn">Unlock</button>
         </div>
       </div>
     </div>
   </div>
 
-  <script>
-    /* =======================
-       AUTH (hash only)
-       ======================= */
-    const EXPECTED_USER = "y8tireu";
-    const SALT = "p9$V3!n2";
-    // SHA256("y8tireu:051285:p9$V3!n2")
-    const EXPECTED_HASH_HEX = "1007e61100fc2fae55839e2aba29000155e956343aeb1e4f67a792aa08cbb350";
+<script>
+  const EXPECTED_USER = "y8tireu";
+  const SALT = "p9$V3!n2";
+  // SHA256("y8tireu:051285:p9$V3!n2")
+  const EXPECTED_HASH_HEX = "1007e61100fc2fae55839e2aba29000155e956343aeb1e4f67a792aa08cbb350";
 
-    async function sha256Hex(input){
-      const enc = new TextEncoder();
-      const data = enc.encode(input);
-      const digest = await crypto.subtle.digest("SHA-256", data);
-      const bytes = new Uint8Array(digest);
-      return Array.from(bytes).map(b => b.toString(16).padStart(2,"0")).join("");
+  async function sha256Hex(input){
+    const enc = new TextEncoder();
+    const data = enc.encode(input);
+    const digest = await crypto.subtle.digest("SHA-256", data);
+    const bytes = new Uint8Array(digest);
+    return Array.from(bytes).map(b => b.toString(16).padStart(2,"0")).join("");
+  }
+
+  const ROOT_FOLDERS = [
+    { name:"Documents", url:"documents/", icon:"📄" },
+    { name:"Music",     url:"music/",     icon:"🎵" },
+    { name:"Pictures",  url:"pictures/",  icon:"🖼️" },
+    { name:"Videos",    url:"videos/",    icon:"🎬" }
+  ];
+
+  const rowsEl = document.getElementById("rows");
+  const searchBox = document.getElementById("searchBox");
+  const openBtn = document.getElementById("openBtn");
+  const bigicon = document.getElementById("bigicon");
+  const previewLabel = document.getElementById("previewLabel");
+  const kv = document.getElementById("kv");
+  const sbLeft = document.getElementById("sbLeft");
+  const sbRight = document.getElementById("sbRight");
+  const addr = document.getElementById("addr");
+  const tree = document.getElementById("tree");
+
+  const ctxMenu = document.getElementById("ctxMenu");
+  const ctxOpen = document.getElementById("ctxOpen");
+
+  const lock = document.getElementById("lock");
+  const msg = document.getElementById("msg");
+  const userEl = document.getElementById("user");
+  const passEl = document.getElementById("pass");
+  const submitBtn = document.getElementById("submitBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const statusDot = document.getElementById("statusDot");
+  const statusText = document.getElementById("statusText");
+  const subtitle = document.getElementById("subtitle");
+
+  let selectedIndex = -1;
+  let filtered = [];
+
+  function setLocked(locked){
+    if(locked){
+      lock.classList.add("show");
+      statusText.textContent = "Locked";
+      subtitle.textContent = "Locked";
+      statusDot.style.background = "var(--danger)";
+      statusDot.style.boxShadow = "0 0 0 6px rgba(251,113,133,.12)";
+    }else{
+      lock.classList.remove("show");
+      statusText.textContent = "Unlocked";
+      subtitle.textContent = "Unlocked";
+      statusDot.style.background = "var(--ok)";
+      statusDot.style.boxShadow = "0 0 0 6px rgba(52,211,153,.12)";
+    }
+  }
+
+  function applyFilter(){
+    const q = (searchBox.value || "").trim().toLowerCase();
+    filtered = !q ? ROOT_FOLDERS : ROOT_FOLDERS.filter(x => x.name.toLowerCase().includes(q));
+    if(filtered.length === 0) selectedIndex = -1;
+    else if(selectedIndex < 0 || selectedIndex >= filtered.length) selectedIndex = 0;
+  }
+
+  function selectedItem(){
+    if(selectedIndex < 0 || selectedIndex >= filtered.length) return null;
+    return filtered[selectedIndex];
+  }
+
+  function updateDetails(){
+    const it = selectedItem();
+    openBtn.disabled = !it;
+    ctxOpen.disabled = !it;
+
+    if(!it){
+      bigicon.textContent = "🗂️";
+      previewLabel.textContent = "Select an item";
+      kv.innerHTML = `<div class="k">Name</div><div class="v">—</div>
+                      <div class="k">Type</div><div class="v">—</div>
+                      <div class="k">URL</div><div class="v">—</div>`;
+      sbRight.textContent = "Ready";
+      return;
     }
 
-    /* =======================
-       VIRTUAL MODEL
-       - folders navigate inside app
-       - files redirect to their path
-       ======================= */
-    const FS = {
-      "": [
-        { name:"Documents", path:"documents/", kind:"folder", type:"File folder", icon:"📄", modified:"—", size:"—" },
-        { name:"Music",     path:"music/",     kind:"folder", type:"File folder", icon:"🎵", modified:"—", size:"—" },
-        { name:"Pictures",  path:"pictures/",  kind:"folder", type:"File folder", icon:"🖼️", modified:"—", size:"—" },
-        { name:"Videos",    path:"videos/",    kind:"folder", type:"File folder", icon:"🎬", modified:"—", size:"—" },
-      ],
-      "documents/": [
-        { name:"Resume.pdf", path:"documents/Resume.pdf", kind:"file", type:"PDF File", icon:"📕", modified:"—", size:"—" },
-        { name:"Notes.txt",  path:"documents/Notes.txt",  kind:"file", type:"Text Document", icon:"📝", modified:"—", size:"—" }
-      ],
-      "music/": [
-        { name:"Track01.mp3", path:"music/Track01.mp3", kind:"file", type:"MP3 File", icon:"🎧", modified:"—", size:"—" }
-      ],
-      "pictures/": [
-        { name:"wallpapers", path:"pictures/wallpapers/", kind:"folder", type:"File folder", icon:"🧩", modified:"—", size:"—" },
-        { name:"Photo01.jpg", path:"pictures/Photo01.jpg", kind:"file", type:"JPEG image", icon:"🖼️", modified:"—", size:"—" }
-      ],
-      "pictures/wallpapers/": [
-        { name:"wallpaper.jpeg", path:"pictures/wallpapers/wallpaper.jpeg", kind:"file", type:"JPEG image", icon:"🖼️", modified:"—", size:"—" }
-      ],
-      "videos/": [
-        { name:"Clip01.mp4", path:"videos/Clip01.mp4", kind:"file", type:"MP4 video", icon:"🎞️", modified:"—", size:"—" }
-      ],
-    };
+    bigicon.textContent = it.icon;
+    previewLabel.textContent = it.url;
+    kv.innerHTML = `<div class="k">Name</div><div class="v" title="${it.name}">${it.name}</div>
+                    <div class="k">Type</div><div class="v">File folder</div>
+                    <div class="k">URL</div><div class="v" title="${it.url}">${it.url}</div>`;
+    sbRight.textContent = "Folder selected";
+  }
 
-    const TREE = [
-      { id:"qa", name:"Quick access", icon:"⭐", hint:"", children:[
-        { id:"home", name:"NoxiustDrive", icon:"🗂️", path:"", hint:"" },
-        { id:"docs", name:"Documents", icon:"📄", path:"documents/", hint:"" },
-        { id:"pics", name:"Pictures", icon:"🖼️", path:"pictures/", hint:"" },
-      ]},
-      { id:"thispc", name:"This PC", icon:"🖥️", hint:"NoxiustDrive", children:[
-        { id:"music", name:"Music", icon:"🎵", path:"music/", hint:"" },
-        { id:"vids", name:"Videos", icon:"🎬", path:"videos/", hint:"" },
-      ]}
-    ];
+  function renderRows(){
+    rowsEl.innerHTML = "";
+    applyFilter();
 
-    /* =======================
-       DOM
-       ======================= */
-    const win = document.getElementById("win");
-    const subtitle = document.getElementById("subtitle");
-    const statusDot = document.getElementById("statusDot");
-    const statusText = document.getElementById("statusText");
-    const sbLeft = document.getElementById("sbLeft");
-    const sbRight = document.getElementById("sbRight");
-
-    const backBtn = document.getElementById("backBtn");
-    const forwardBtn = document.getElementById("forwardBtn");
-    const upBtn = document.getElementById("upBtn");
-    const openBtn = document.getElementById("openBtn");
-    const refreshBtn = document.getElementById("refreshBtn");
-    const loginBtn = document.getElementById("loginBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
-
-    const addr = document.getElementById("addr");
-    const addrEdit = document.getElementById("addrEdit");
-    const searchBox = document.getElementById("searchBox");
-
-    const treeEl = document.getElementById("tree");
-    const collapseAllBtn = document.getElementById("collapseAllBtn");
-
-    const rowsEl = document.getElementById("rows");
-    const bigicon = document.getElementById("bigicon");
-    const previewLabel = document.getElementById("previewLabel");
-    const kv = document.getElementById("kv");
-
-    const ctxMenu = document.getElementById("ctxMenu");
-    const ctxOpen = document.getElementById("ctxOpen");
-
-    // Lock screen
-    const lock = document.getElementById("lock");
-    const lockTop = document.getElementById("lockTop");
-    const signin = document.getElementById("signin");
-    const lockTime = document.getElementById("lockTime");
-    const lockDate = document.getElementById("lockDate");
-    const userEl = document.getElementById("user");
-    const passEl = document.getElementById("pass");
-    const msg = document.getElementById("msg");
-    const submitBtn = document.getElementById("submitBtn");
-    const cancelBtn = document.getElementById("cancelBtn");
-
-    /* =======================
-       STATE
-       ======================= */
-    let currentPath = "";
-    let selectedIndex = -1;
-    let filtered = [];
-    let expanded = new Set(["qa","thispc"]);
-
-    let backStack = [];
-    let forwardStack = [];
-
-    function normalizePath(p){
-      if(!p) return "";
-      return p.endsWith("/") ? p : (p + "/");
-    }
-    function nowDate(){
-      return new Date().toLocaleDateString(undefined, { year:"numeric", month:"short", day:"2-digit" });
-    }
-
-    function setLocked(isLocked){
-      if(isLocked){
-        win.classList.add("locked");
-        subtitle.textContent = "Locked";
-        statusText.textContent = "Locked";
-        statusDot.style.background = "var(--danger)";
-        statusDot.style.boxShadow = "0 0 0 6px rgba(251,113,133,.12)";
-        loginBtn.style.display = "inline-flex";
-        logoutBtn.style.display = "none";
-      }else{
-        win.classList.remove("locked");
-        subtitle.textContent = "Unlocked";
-        statusText.textContent = "Unlocked";
-        statusDot.style.background = "var(--ok)";
-        statusDot.style.boxShadow = "0 0 0 6px rgba(52,211,153,.12)";
-        loginBtn.style.display = "none";
-        logoutBtn.style.display = "inline-flex";
-      }
-    }
-
-    function showLock(show){
-      lock.classList.toggle("show", show);
-      if(show){
-        signin.classList.remove("show");
-        lockTop.style.opacity = "1";
-        lockTop.style.transform = "translateY(0)";
-        msg.textContent = "";
-        userEl.value = "";
-        passEl.value = "";
-      }
-    }
-
-    function showSignin(){
-      signin.classList.add("show");
-      lockTop.style.opacity = "0";
-      lockTop.style.transform = "translateY(-12px)";
-      setTimeout(()=>userEl.focus(), 50);
-    }
-    function hideSignin(){
-      signin.classList.remove("show");
-      lockTop.style.opacity = "1";
-      lockTop.style.transform = "translateY(0)";
-      msg.textContent = "";
-      userEl.value = "";
-      passEl.value = "";
-    }
-
-    function getEntries(path){
-      path = normalizePath(path);
-      return FS[path] ? [...FS[path]] : [];
-    }
-    function applyFilter(){
-      const q = (searchBox.value || "").trim().toLowerCase();
-      const items = getEntries(currentPath);
-      filtered = !q ? items : items.filter(e =>
-        (e.name||"").toLowerCase().includes(q) ||
-        (e.type||"").toLowerCase().includes(q) ||
-        (e.path||"").toLowerCase().includes(q)
-      );
-      if(filtered.length === 0) selectedIndex = -1;
-      else if(selectedIndex < 0 || selectedIndex >= filtered.length) selectedIndex = 0;
-    }
-
-    function navigate(path, pushHistory=true){
-      path = normalizePath(path);
-      if(path === currentPath) return;
-
-      if(pushHistory){
-        backStack.push(currentPath);
-        forwardStack = [];
-      }
-      currentPath = path;
-      selectedIndex = -1;
-      searchBox.value = "";
-      hideCtx();
-      renderAll();
-    }
-
-    function goBack(){
-      if(backStack.length === 0) return;
-      forwardStack.push(currentPath);
-      currentPath = backStack.pop();
-      selectedIndex = -1;
-      searchBox.value = "";
-      hideCtx();
-      renderAll();
-    }
-    function goForward(){
-      if(forwardStack.length === 0) return;
-      backStack.push(currentPath);
-      currentPath = forwardStack.pop();
-      selectedIndex = -1;
-      searchBox.value = "";
-      hideCtx();
-      renderAll();
-    }
-    function goUp(){
-      if(!currentPath) return;
-      const clean = currentPath.replace(/\/$/,"");
-      const up = clean.includes("/") ? clean.split("/").slice(0,-1).join("/") + "/" : "";
-      navigate(up);
-    }
-
-    function selectedItem(){
-      if(selectedIndex < 0 || selectedIndex >= filtered.length) return null;
-      return filtered[selectedIndex];
-    }
-
-    function openSelected(){
-      const it = selectedItem();
-      if(!it) return;
-
-      // Folder opens inside app; file redirects
-      if(it.kind === "folder"){
-        navigate(it.path);
-      }else{
-        window.location.href = it.path;
-      }
-    }
-
-    function updateDetails(){
-      const it = selectedItem();
-      openBtn.disabled = !it;
-      ctxOpen.disabled = !it;
-
-      if(!it){
-        bigicon.textContent = "🗂️";
-        previewLabel.textContent = "Select an item";
-        kv.innerHTML = `
-          <div class="k">Name</div><div class="v">—</div>
-          <div class="k">Type</div><div class="v">—</div>
-          <div class="k">Path</div><div class="v">—</div>
-          <div class="k">Modified</div><div class="v">—</div>
-          <div class="k">Size</div><div class="v">—</div>
-        `;
-        sbRight.textContent = "Ready";
-        return;
-      }
-
-      bigicon.textContent = it.icon || (it.kind === "folder" ? "📁" : "📄");
-      previewLabel.textContent = it.path;
-
-      const modified = it.modified && it.modified !== "—" ? it.modified : nowDate();
-      const size = it.size || "—";
-
-      kv.innerHTML = `
-        <div class="k">Name</div><div class="v" title="${it.name}">${it.name}</div>
-        <div class="k">Type</div><div class="v" title="${it.type}">${it.type}</div>
-        <div class="k">Path</div><div class="v" title="${it.path}">${it.path}</div>
-        <div class="k">Modified</div><div class="v" title="${modified}">${modified}</div>
-        <div class="k">Size</div><div class="v" title="${size}">${size}</div>
-      `;
-      sbRight.textContent = it.kind === "folder" ? "Folder selected" : "File selected";
-    }
-
-    function renderRows(){
-      rowsEl.innerHTML = "";
-      applyFilter();
-
-      filtered.forEach((e, idx)=>{
-        const row = document.createElement("div");
-        row.className = "row" + (idx === selectedIndex ? " selected" : "");
-        row.tabIndex = 0;
-
-        const date = e.modified && e.modified !== "—" ? e.modified : nowDate();
-
-        row.innerHTML = `
-          <div class="cellname">
-            <div class="fileicon">${e.icon || (e.kind==="folder" ? "📁" : "📄")}</div>
-            <div class="nametext">
-              <b title="${e.name}">${e.name}</b>
-              <span>${e.path}</span>
-            </div>
+    filtered.forEach((e, idx)=>{
+      const row = document.createElement("div");
+      row.className = "row" + (idx === selectedIndex ? " selected" : "");
+      row.innerHTML = `
+        <div class="cellname">
+          <div class="fileicon">${e.icon}</div>
+          <div class="nametext">
+            <b>${e.name}</b>
+            <span>${e.url}</span>
           </div>
-          <div class="type">${e.type}</div>
-          <div class="modified">${date}</div>
-        `;
+        </div>
+        <div class="type">File folder</div>
+        <div class="modified">—</div>
+      `;
 
-        row.addEventListener("click", ()=>{
-          selectedIndex = idx;
-          hideCtx();
-          renderRows(); // re-render to update highlight
-        });
-
-        row.addEventListener("dblclick", ()=>{
-          selectedIndex = idx;
-          hideCtx();
-          openSelected();
-        });
-
-        row.addEventListener("contextmenu", (ev)=>{
-          ev.preventDefault();
-          selectedIndex = idx;
-          renderRows();
-          showCtx(ev.clientX, ev.clientY);
-        });
-
-        rowsEl.appendChild(row);
-      });
-
-      // default select first item when entering folder
-      if(selectedIndex === -1 && filtered.length) selectedIndex = 0;
-
-      // update status bar + details
-      sbLeft.textContent = `${filtered.length} item${filtered.length===1?"":"s"}`;
-      updateDetails();
-
-      // apply highlight without recursion loop
-      const rows = rowsEl.querySelectorAll(".row");
-      rows.forEach((r,i)=> r.classList.toggle("selected", i===selectedIndex));
-    }
-
-    function renderBreadcrumbs(){
-      const parts = [];
-      parts.push({ label:"This PC", path:null });
-      parts.push({ label:"NoxiustDrive", path:"" });
-
-      if(currentPath){
-        const segs = currentPath.split("/").filter(Boolean);
-        let accum = "";
-        for(const s of segs){
-          accum += s + "/";
-          parts.push({ label: s, path: accum });
-        }
-      }
-
-      addr.innerHTML = parts.map((p,i)=>{
-        const sep = i===0 ? "" : `<span class="sep">›</span>`;
-        if(p.path === null){
-          return `${sep}<span class="crumb"><span>${p.label}</span></span>`;
-        }
-        return `${sep}<span class="crumb"><button data-path="${p.path}">${p.label}</button></span>`;
-      }).join("");
-
-      addr.querySelectorAll("button[data-path]").forEach(btn=>{
-        btn.addEventListener("click", ()=> navigate(btn.dataset.path));
-      });
-
-      // Also keep editable path
-      addrEdit.value = currentPath || "";
-    }
-
-    function renderTree(){
-      treeEl.innerHTML = "";
-
-      function renderNode(node, depth){
-        const hasKids = Array.isArray(node.children) && node.children.length>0;
-        const isExpanded = expanded.has(node.id);
-
-        const wrap = document.createElement("div");
-        wrap.style.marginLeft = (depth * 10) + "px";
-
-        const line = document.createElement("div");
-        line.className = "node" + (node.path !== undefined && normalizePath(node.path) === currentPath ? " active" : "");
-        line.tabIndex = 0;
-
-        const twisty = document.createElement("div");
-        twisty.className = "twisty";
-        twisty.textContent = hasKids ? (isExpanded ? "▾" : "▸") : "";
-
-        const icon = document.createElement("div");
-        icon.className = "icon";
-        icon.textContent = node.icon || "📁";
-
-        const label = document.createElement("div");
-        label.className = "label";
-        label.innerHTML = `<b>${node.name}</b><span>${node.hint || ""}</span>`;
-
-        line.appendChild(twisty);
-        line.appendChild(icon);
-        line.appendChild(label);
-        wrap.appendChild(line);
-
-        if(hasKids){
-          const kids = document.createElement("div");
-          kids.className = "children" + (isExpanded ? " show" : "");
-          node.children.forEach(ch => kids.appendChild(renderNode(ch, depth+1)));
-          wrap.appendChild(kids);
-
-          twisty.addEventListener("click", (ev)=>{
-            ev.stopPropagation();
-            if(expanded.has(node.id)) expanded.delete(node.id);
-            else expanded.add(node.id);
-            renderTree();
-          });
-        }
-
-        line.addEventListener("click", ()=>{
-          hideCtx();
-          if(node.path !== undefined) navigate(node.path);
-          else if(hasKids){
-            if(expanded.has(node.id)) expanded.delete(node.id);
-            else expanded.add(node.id);
-            renderTree();
-          }
-        });
-
-        line.addEventListener("keydown", (ev)=>{
-          if(ev.key === "Enter"){
-            ev.preventDefault();
-            if(node.path !== undefined) navigate(node.path);
-            else if(hasKids){
-              if(expanded.has(node.id)) expanded.delete(node.id);
-              else expanded.add(node.id);
-              renderTree();
-            }
-          }
-          if(ev.key === "ArrowRight" && hasKids && !isExpanded){
-            expanded.add(node.id); renderTree();
-          }
-          if(ev.key === "ArrowLeft" && hasKids && isExpanded){
-            expanded.delete(node.id); renderTree();
-          }
-        });
-
-        return wrap;
-      }
-
-      TREE.forEach(n => treeEl.appendChild(renderNode(n,0)));
-    }
-
-    function renderToolbarState(){
-      backBtn.disabled = backStack.length === 0;
-      forwardBtn.disabled = forwardStack.length === 0;
-      upBtn.disabled = currentPath === "";
-      openBtn.disabled = !selectedItem();
-    }
-
-    function renderAll(){
-      renderBreadcrumbs();
-      renderTree();
-      renderRows();
-      renderToolbarState();
-    }
-
-    /* =======================
-       Context Menu
-       ======================= */
-    function showCtx(x,y){
-      ctxMenu.style.display = "block";
-      const pad = 8;
-      const w = ctxMenu.offsetWidth;
-      const h = ctxMenu.offsetHeight;
-      const maxX = window.innerWidth - w - pad;
-      const maxY = window.innerHeight - h - pad;
-      ctxMenu.style.left = Math.max(pad, Math.min(x, maxX)) + "px";
-      ctxMenu.style.top  = Math.max(pad, Math.min(y, maxY)) + "px";
-      updateDetails();
-    }
-    function hideCtx(){ ctxMenu.style.display = "none"; }
-
-    document.addEventListener("contextmenu", (ev)=>{
-      // prevent browser menu anywhere inside app
-      if(ev.target.closest(".window")){
-        ev.preventDefault();
-        if(!ev.target.closest(".row")) hideCtx();
-      }
-    });
-    document.addEventListener("click", (ev)=>{
-      if(!ev.target.closest(".ctx")) hideCtx();
-    });
-    window.addEventListener("resize", hideCtx);
-
-    ctxOpen.addEventListener("click", ()=>{
-      hideCtx();
-      openSelected();
-    });
-
-    /* =======================
-       Address edit (Ctrl+L / click)
-       ======================= */
-    function startAddrEdit(){
-      addr.style.display = "none";
-      addrEdit.style.display = "block";
-      addrEdit.focus();
-      addrEdit.select();
-    }
-    function endAddrEdit(apply){
-      addrEdit.style.display = "none";
-      addr.style.display = "flex";
-      if(apply){
-        const raw = (addrEdit.value || "").trim();
-        // allow: "", "documents/", "pictures/wallpapers/" ...
-        const p = raw ? normalizePath(raw) : "";
-        if(FS[p] !== undefined) navigate(p);
-        else {
-          // if unknown path, just revert (no warning text)
-          addrEdit.value = currentPath || "";
-        }
-      }else{
-        addrEdit.value = currentPath || "";
-      }
-    }
-    addr.addEventListener("click", startAddrEdit);
-    addrEdit.addEventListener("keydown", (ev)=>{
-      if(ev.key === "Enter") endAddrEdit(true);
-      if(ev.key === "Escape") endAddrEdit(false);
-    });
-    addrEdit.addEventListener("blur", ()=> endAddrEdit(false));
-
-    /* =======================
-       Keyboard (Windows-like)
-       ======================= */
-    rowsEl.addEventListener("keydown", (ev)=>{
-      if(filtered.length === 0) return;
-
-      if(ev.key === "ArrowDown"){
-        ev.preventDefault();
-        selectedIndex = Math.min(filtered.length-1, selectedIndex + 1);
+      row.addEventListener("click", ()=>{
+        selectedIndex = idx;
+        hideCtx();
         renderRows();
-        scrollSelectionIntoView();
-      }
-      if(ev.key === "ArrowUp"){
-        ev.preventDefault();
-        selectedIndex = Math.max(0, selectedIndex - 1);
-        renderRows();
-        scrollSelectionIntoView();
-      }
-      if(ev.key === "Enter"){
-        ev.preventDefault();
+      });
+      row.addEventListener("dblclick", ()=>{
+        selectedIndex = idx;
+        hideCtx();
         openSelected();
-      }
-      if(ev.key === "Backspace"){
+      });
+      row.addEventListener("contextmenu", (ev)=>{
         ev.preventDefault();
-        goUp();
-      }
+        selectedIndex = idx;
+        renderRows();
+        showCtx(ev.clientX, ev.clientY);
+      });
+
+      rowsEl.appendChild(row);
     });
 
-    document.addEventListener("keydown", (ev)=>{
-      // Ctrl+L => edit address
-      if(ev.ctrlKey && (ev.key === "l" || ev.key === "L")){
-        ev.preventDefault();
-        startAddrEdit();
-      }
-      // Alt+Left/Right => back/forward
-      if(ev.altKey && ev.key === "ArrowLeft"){ ev.preventDefault(); goBack(); }
-      if(ev.altKey && ev.key === "ArrowRight"){ ev.preventDefault(); goForward(); }
+    sbLeft.textContent = `${filtered.length} item${filtered.length===1?"":"s"}`;
+    updateDetails();
+    rowsEl.querySelectorAll(".row").forEach((r,i)=> r.classList.toggle("selected", i===selectedIndex));
+  }
+
+  function openSelected(){
+    const it = selectedItem();
+    if(!it) return;
+    window.location.href = it.url;
+  }
+
+  function renderTree(){
+    tree.innerHTML = "";
+    ROOT_FOLDERS.forEach((f)=>{
+      const n = document.createElement("div");
+      n.className = "node";
+      n.innerHTML = `<div class="icon">${f.icon}</div>
+                     <div class="label"><b>${f.name}</b><span>${f.url}</span></div>`;
+      n.addEventListener("click", ()=> window.location.href = f.url);
+      tree.appendChild(n);
     });
+  }
 
-    function scrollSelectionIntoView(){
-      const rows = rowsEl.querySelectorAll(".row");
-      const el = rows[selectedIndex];
-      if(!el) return;
-      const rect = el.getBoundingClientRect();
-      const parentRect = rowsEl.getBoundingClientRect();
-      if(rect.top < parentRect.top) el.scrollIntoView({block:"nearest"});
-      if(rect.bottom > parentRect.bottom) el.scrollIntoView({block:"nearest"});
-    }
+  function showCtx(x,y){
+    ctxMenu.style.display = "block";
+    const pad=8;
+    const w=ctxMenu.offsetWidth, h=ctxMenu.offsetHeight;
+    ctxMenu.style.left = Math.max(pad, Math.min(x, innerWidth-w-pad)) + "px";
+    ctxMenu.style.top  = Math.max(pad, Math.min(y, innerHeight-h-pad)) + "px";
+    updateDetails();
+  }
+  function hideCtx(){ ctxMenu.style.display = "none"; }
 
-    /* =======================
-       Events
-       ======================= */
-    backBtn.addEventListener("click", goBack);
-    forwardBtn.addEventListener("click", goForward);
-    upBtn.addEventListener("click", goUp);
-    openBtn.addEventListener("click", openSelected);
-    refreshBtn.addEventListener("click", ()=>{ hideCtx(); renderAll(); });
-
-    searchBox.addEventListener("input", ()=>{
-      selectedIndex = -1;
-      hideCtx();
-      renderRows();
-    });
-
-    collapseAllBtn.addEventListener("click", ()=>{
-      expanded = new Set(["qa","thispc"]);
-      renderTree();
-    });
-
-    // clicking blank space in list clears context menu
-    document.getElementById("list").addEventListener("click", (ev)=>{
+  document.addEventListener("click", (ev)=>{
+    if(!ev.target.closest(".ctx")) hideCtx();
+  });
+  document.addEventListener("contextmenu", (ev)=>{
+    if(ev.target.closest(".window")){
+      ev.preventDefault();
       if(!ev.target.closest(".row")) hideCtx();
-    });
-
-    /* =======================
-       Lock Screen behavior
-       ======================= */
-    function tickLock(){
-      const d = new Date();
-      lockTime.textContent = d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
-      lockDate.textContent = d.toLocaleDateString([], {weekday:"long", year:"numeric", month:"long", day:"numeric"});
     }
-    tickLock();
-    setInterval(tickLock, 1000);
+  });
+  window.addEventListener("resize", hideCtx);
 
-    lock.addEventListener("click", ()=>{
-      if(!signin.classList.contains("show")) showSignin();
-    });
-    document.addEventListener("keydown", (ev)=>{
-      if(!lock.classList.contains("show")) return;
+  ctxOpen.addEventListener("click", ()=>{ hideCtx(); openSelected(); });
+  openBtn.addEventListener("click", openSelected);
+  document.getElementById("refreshBtn").addEventListener("click", ()=>{ hideCtx(); renderRows(); });
 
-      if(!signin.classList.contains("show") && (ev.key === "Enter" || ev.key === " ")){
-        ev.preventDefault();
-        showSignin();
-      }else if(signin.classList.contains("show") && ev.key === "Escape"){
-        ev.preventDefault();
-        hideSignin();
-      }
-    });
+  searchBox.addEventListener("input", ()=>{
+    selectedIndex = -1;
+    hideCtx();
+    renderRows();
+  });
 
-    cancelBtn.addEventListener("click", hideSignin);
-
-    async function attemptLogin(){
-      const u = userEl.value.trim();
-      const p = passEl.value;
-
-      // no tips — just generic failure
-      msg.textContent = "";
-
-      if(!u || !p){ msg.textContent = "Invalid username or password."; return; }
-      if(u !== EXPECTED_USER){ msg.textContent = "Invalid username or password."; return; }
-
-      const candidate = `${u}:${p}:${SALT}`;
-      const h = await sha256Hex(candidate);
-
-      if(h === EXPECTED_HASH_HEX){
-        sessionStorage.setItem("auth_ok", "1");
-        setLocked(false);
-        showLock(false);
-        msg.textContent = "";
-        passEl.value = "";
-        // focus list for keyboard nav
-        setTimeout(()=>rowsEl.focus(), 50);
-      }else{
-        msg.textContent = "Invalid username or password.";
-      }
+  async function attemptLogin(){
+    const u = userEl.value.trim();
+    const p = passEl.value;
+    msg.textContent = "";
+    if(!u || !p || u !== EXPECTED_USER){ msg.textContent = "Invalid username or password."; return; }
+    const h = await sha256Hex(`${u}:${p}:${SALT}`);
+    if(h === EXPECTED_HASH_HEX){
+      sessionStorage.setItem("auth_ok","1");
+      setLocked(false);
+      passEl.value = "";
+    } else {
+      msg.textContent = "Invalid username or password.";
     }
+  }
+  submitBtn.addEventListener("click", attemptLogin);
+  passEl.addEventListener("keydown", (e)=>{ if(e.key==="Enter") attemptLogin(); });
 
-    submitBtn.addEventListener("click", attemptLogin);
-    passEl.addEventListener("keydown", (ev)=>{ if(ev.key === "Enter") attemptLogin(); });
-    userEl.addEventListener("keydown", (ev)=>{ if(ev.key === "Enter") passEl.focus(); });
+  logoutBtn.addEventListener("click", ()=>{
+    sessionStorage.removeItem("auth_ok");
+    setLocked(true);
+    userEl.value=""; passEl.value=""; msg.textContent="";
+  });
 
-    loginBtn.addEventListener("click", ()=>{
-      showLock(true);
-    });
+  addr.textContent = "/";
+  renderTree();
+  renderRows();
 
-    logoutBtn.addEventListener("click", ()=>{
-      sessionStorage.removeItem("auth_ok");
-      setLocked(true);
-      showLock(true);
-    });
-
-    /* =======================
-       Init
-       ======================= */
-    renderAll();
-
-    const authed = sessionStorage.getItem("auth_ok") === "1";
-    setLocked(!authed);
-    showLock(!authed);
-    if(!authed) setTimeout(()=>{}, 0);
-  </script>
+  const authed = sessionStorage.getItem("auth_ok")==="1";
+  setLocked(!authed);
+</script>
 </body>
 </html>
